@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: ''
+    ports:
+      - "3306:3306"
+    volumes:
+      # YOU MUST CHANGE THE PATH TO THE DB ON YOUR LOCAL DRIVE!
+      - <PATH TO DB ON LOCAL DRIVE>:/var/lib/mysql
+      - .:/app
+    working_dir: /app
