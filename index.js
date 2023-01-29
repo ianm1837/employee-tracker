@@ -9,8 +9,9 @@ const updateEmployeeManager = require('./src/update/updateEmployeeManager');
 const updateEmployeeRole = require('./src/update/updateEmployeeRole');
 
 async function main() {
-  let answer = inquirer.createPromptModule({
+  let questions = {
     type: 'list',
+    name: 'answer',
     message: 'what would you like to do?',
     choices: [
       'Get all Departments',
@@ -23,28 +24,36 @@ async function main() {
       'Update Employee Role',
       'Quit',
     ],
-  });
+  };
 
-  if (answer == 'Get all Departments') {
-    await getAllDepartments;
-  } else if (answer == 'Get All Employees') {
-    await getAllEmployees;
-  } else if (answer == 'Get All Roles') {
-    await getAllRoles;
-  } else if (answer == 'Add Department') {
-    await addDepartment;
-  } else if (answer == 'Add Role') {
-    await addRole;
-  } else if (answer == 'Add Employee') {
-    await addEmployee;
-  } else if (answer == 'Update Employee Manager') {
-    await updateEmployeeManager;
-  } else if (answer == 'Update Employee Role') {
-    await updateEmployeeRole;
-  } else if (answer == 'Quit') {
+  let mainMenu = await inquirer.prompt(questions);
+
+  if (mainMenu.answer == 'Get all Departments') {
+    await getAllDepartments();
+    main();
+  } else if (mainMenu.answer == 'Get All Employees') {
+    await getAllEmployees();
+    main();
+  } else if (mainMenu.answer == 'Get All Roles') {
+    await getAllRoles();
+    main();
+  } else if (mainMenu.answer == 'Add Department') {
+    await addDepartment();
+  } else if (mainMenu.answer == 'Add Role') {
+    await addRole();
+  } else if (mainMenu.answer == 'Add Employee') {
+    await addEmployee();
+  } else if (mainMenu.answer == 'Update Employee Manager') {
+    await updateEmployeeManager();
+  } else if (mainMenu.answer == 'Update Employee Role') {
+    await updateEmployeeRole();
+  } else if (mainMenu.answer == 'Quit') {
     console.log('Bye!');
     process.exit();
   }
 }
 
+console.clear();
 main();
+
+module.exports = main;

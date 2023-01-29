@@ -1,18 +1,22 @@
 const mysql = require('mysql2/promise');
-const dotenv = require('dotenv');
+require('dotenv').config();
 
-const ENV = process.dotenv;
+const ENV = process.env;
 
-const dbConnection = await mysql.createConnection({
-  host: ENV.host,
-  user: ENV.user,
-  password: ENV.password,
-  database: ENV.database,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 3,
-});
+async function dbConnection(command) {
+  const connection = await mysql.createConnection({
+    host: ENV.EMPLOYEE_DB_HOST,
+    user: ENV.EMPLOYEE_DB_USERNAME,
+    password: ENV.EMPLOYEE_DB_PASSWORD,
+    database: ENV.EMPLOYEE_DB_DATABASE,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 3,
+  });
 
+  let queryResponse = await connection.query(command);
 
+  return queryResponse;
+}
 
 module.exports = dbConnection;
