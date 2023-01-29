@@ -13,6 +13,8 @@ VALUES ('Marketing'),
        ('Customer Service');
 
 
+
+
 INSERT INTO role (title, salary, department_id)
 VALUES ('Sales Lead', 100000, 2),
        ('Salesperson', 80000, 2),

@@ -39,14 +39,19 @@ async function main() {
     main();
   } else if (mainMenu.answer == 'Add Department') {
     await addDepartment();
+    main();
   } else if (mainMenu.answer == 'Add Role') {
     await addRole();
+    main();
   } else if (mainMenu.answer == 'Add Employee') {
     await addEmployee();
+    main();
   } else if (mainMenu.answer == 'Update Employee Manager') {
     await updateEmployeeManager();
+    main();
   } else if (mainMenu.answer == 'Update Employee Role') {
     await updateEmployeeRole();
+    main();
   } else if (mainMenu.answer == 'Quit') {
     console.log('Bye!');
     process.exit();
