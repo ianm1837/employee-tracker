@@ -29,6 +29,26 @@ VALUES ('Sales Lead', 100000, 2),
        ('IT Lead', 200000, 7),
        ('IT Representative', 180000, 7);
 
+-- create managers
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ('John', 'Doe', 1),
+       ('Jane', 'Doe', 2),
+       ('John', 'Smith', 3),
+       ('Jane', 'Smith', 4),
+       ('John', 'Doe', 5),
+       ('Jane', 'Doe', 6),
+       ('John', 'Smith', 7),
+       ('Jane', 'Smith', 8),
+       ('John', 'Doe', 9),
+       ('Jane', 'Doe', 10),
+       ('John', 'Smith', 11),
+       ('Jane', 'Smith', 12),
+       ('John', 'Doe', 13),
+       ('Jane', 'Doe', 14);
+
+-- create employees
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('John', 'Doe', 1, 1),
        ('Jane', 'Doe', 2, 1),
