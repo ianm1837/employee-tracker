@@ -5,7 +5,6 @@ const addRole = require('./src/add/addRole');
 const getAllDepartments = require('./src/get/getAllDepartments');
 const getAllEmployees = require('./src/get/getAllEmployees');
 const getAllRoles = require('./src/get/getAllRoles');
-const updateEmployeeManager = require('./src/update/updateEmployeeManager');
 const updateEmployeeRole = require('./src/update/updateEmployeeRole');
 
 async function main() {
@@ -60,5 +59,3 @@ async function main() {
 
 console.clear();
 main();
-
-module.exports = main;

@@ -8,20 +8,6 @@ const dbConnection = require('../dbConnection');
 const cTable = require('console.table');
 const inquirer = require('inquirer');
 
-async function addDepartment() {
-  const departmentName = await getDepartmentName();
-
-  try {
-    const dbResponse = await dbConnection(
-      `INSERT INTO department (department_name) VALUES ('${departmentName}')`
-    );
-  } catch (err) {
-    console.log(err);
-  }
-
-  return;
-}
-
 async function getDepartmentName() {
   function requireUserInput(input) {
     if (input == '') {
@@ -39,6 +25,21 @@ async function getDepartmentName() {
   });
 
   return inquirerDepartmentName.departmentName;
+}
+
+async function addDepartment() {
+  const departmentName = await getDepartmentName();
+
+  try {
+    const dbResponse = await dbConnection(
+      `INSERT INTO department (department_name) VALUES ('${departmentName}')`
+    );
+    console.log(`Successfully added ${departmentName}!`);
+  } catch (err) {
+    console.log(err);
+  }
+
+  return;
 }
 
 module.exports = addDepartment;

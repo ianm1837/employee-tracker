@@ -1,6 +1,3 @@
-// getAllEmployees
-//   returns table with:
-//   | employee id | first name | last name | job title | department | salary | manager |
 const dbConnection = require('../dbConnection');
 const cTable = require('console.table');
 

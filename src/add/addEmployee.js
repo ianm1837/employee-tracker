@@ -9,21 +9,7 @@ const dbConnection = require('../dbConnection');
 const cTable = require('console.table');
 const inquirer = require('inquirer');
 
-async function getAllDepartments() {
-  const departmentName = await getDepartmentName();
-
-  try {
-    const dbResponse = await dbConnection(
-      `INSERT INTO department (department_name) VALUES ('${departmentName}')`
-    );
-  } catch (err) {
-    console.log(err);
-  }
-
-  return;
-}
-
-async function getDepartmentName() {
+async function addEmployee() {
   function requireUserInput(input) {
     if (input == '') {
       return 'Entry cannot be blank!';
@@ -32,12 +18,55 @@ async function getDepartmentName() {
     return true;
   }
 
-  const inquirerDepartmentName = await inquirer.prompt({
-    type: 'input',
-    name: 'departmentName',
-    message: 'What would you like to name the Department?',
-    validate: requireUserInput,
-  });
+  const [availableManagers] = await dbConnection(`
+    SELECT 
+      manager.employee_id AS value, CONCAT('id: ', manager.employee_id, ' ' , manager.first_name, ' ', manager.last_name, ' - ', role.title) AS 'name'
 
-  return inquirerDepartmentName.departmentName;
+    FROM employee
+
+    INNER JOIN employee AS manager ON employee.manager_id=manager.employee_id
+    INNER JOIN role ON role.role_id=manager.role_id
+
+    GROUP BY manager.employee_id
+  `);
+
+  const [availableRoles] = await dbConnection(
+    `SELECT role_id AS value, title AS name FROM role`
+  );
+
+  const newEmployeeInfo = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'employeeFirstName',
+      message: 'Enter First Name',
+      validate: requireUserInput,
+    },
+    {
+      type: 'input',
+      name: 'employeeLastName',
+      message: 'Enter Last Name:',
+      validate: requireUserInput,
+    },
+    {
+      type: 'list',
+      name: 'employeeRole',
+      message: 'Pick the new Employees role',
+      choices: availableRoles,
+    },
+    {
+      type: 'list',
+      name: 'employeeManager',
+      message: 'Pick the new Employees manager',
+      choices: availableManagers,
+    },
+  ]);
+
+  console.log(newEmployeeInfo);
+
+  await dbConnection(
+    `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+    VALUES ('${newEmployeeInfo.employeeFirstName}', '${newEmployeeInfo.employeeLastName}', ${newEmployeeInfo.employeeRole}, ${newEmployeeInfo.employeeManager})`
+  );
 }
+
+module.exports = addEmployee;
