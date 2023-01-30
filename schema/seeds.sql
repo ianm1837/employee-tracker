@@ -38,7 +38,7 @@ VALUES ('Jennifer', 'Mcguire', 1),
        ('Harriet', 'Lane', 7),
        ('Gabriel', 'Holmes', 8),
        ('Rachel', 'Gray', 9),
-       ('Jackie', 'Robertson', 10),
+       ('Jackie', 'Robertson', 10);
 
 
 -- create employees
@@ -53,4 +53,4 @@ VALUES ('Fred', 'Hunter', 1, 1),
        ('Cameron', 'Perry', 7, 4),
        ('Dennis', 'Wolfe', 8, 4),
        ('Salvatore', 'Warner', 9, 5),
-       ('Frankie', 'Fletcher', 10, 5),
+       ('Frankie', 'Fletcher', 10, 5);

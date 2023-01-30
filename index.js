@@ -19,7 +19,6 @@ async function main() {
       'Add Department',
       'Add Role',
       'Add Employee',
-      'Update Employee Manager',
       'Update Employee Role',
       'Quit',
     ],
@@ -44,9 +43,6 @@ async function main() {
     main();
   } else if (mainMenu.answer == 'Add Employee') {
     await addEmployee();
-    main();
-  } else if (mainMenu.answer == 'Update Employee Manager') {
-    await updateEmployeeManager();
     main();
   } else if (mainMenu.answer == 'Update Employee Role') {
     await updateEmployeeRole();
