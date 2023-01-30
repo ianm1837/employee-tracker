@@ -1,10 +1,3 @@
-// addEmployee
-//   returns prompt:
-//     enter first name (not null)
-//     enter last name (not null)
-//     pick role from list (validate: do not create employee if no roles exist not null)
-//     pick manager from list (if there are any; can be null)
-
 const dbConnection = require('../dbConnection');
 const cTable = require('console.table');
 const inquirer = require('inquirer');
@@ -61,11 +54,13 @@ async function addEmployee() {
     },
   ]);
 
-  console.log(newEmployeeInfo);
-
   await dbConnection(
     `INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES ('${newEmployeeInfo.employeeFirstName}', '${newEmployeeInfo.employeeLastName}', ${newEmployeeInfo.employeeRole}, ${newEmployeeInfo.employeeManager})`
+  );
+
+  console.log(
+    `${newEmployeeInfo.employeeFirstName} ${newEmployeeInfo.employeeLastName} has been added!`
   );
 }
 

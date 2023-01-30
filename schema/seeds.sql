@@ -1,5 +1,3 @@
--- add seeds for your database here
-
 USE employee_db;
 
 INSERT INTO department (department_name)
@@ -11,9 +9,6 @@ VALUES ('Marketing'),
        ('Finance'),
        ('Information Technology'),
        ('Customer Service');
-
-
-
 
 INSERT INTO role (title, salary, department_id)
 VALUES ('Sales Lead', 100000, 2),
@@ -34,35 +29,28 @@ VALUES ('Sales Lead', 100000, 2),
 -- create managers
 
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ('John', 'Doe', 1),
-       ('Jane', 'Doe', 2),
-       ('John', 'Smith', 3),
-       ('Jane', 'Smith', 4),
-       ('John', 'Doe', 5),
-       ('Jane', 'Doe', 6),
-       ('John', 'Smith', 7),
-       ('Jane', 'Smith', 8),
-       ('John', 'Doe', 9),
-       ('Jane', 'Doe', 10),
-       ('John', 'Smith', 11),
-       ('Jane', 'Smith', 12),
-       ('John', 'Doe', 13),
-       ('Jane', 'Doe', 14);
+VALUES ('Jennifer', 'Mcguire', 1),
+       ('Darrin', 'Bush', 2),
+       ('Kathleen', 'Leonard', 3),
+       ('Candace', 'Brock', 4),
+       ('Meredith', 'Henderson', 5),
+       ('Ronald', 'Lane', 6),
+       ('Harriet', 'Lane', 7),
+       ('Gabriel', 'Holmes', 8),
+       ('Rachel', 'Gray', 9),
+       ('Jackie', 'Robertson', 10),
+
 
 -- create employees
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('John', 'Doe', 1, 1),
-       ('Jane', 'Doe', 2, 1),
-       ('John', 'Smith', 3, 2),
-       ('Jane', 'Smith', 4, 2),
-       ('John', 'Doe', 5, 3),
-       ('Jane', 'Doe', 6, 3),
-       ('John', 'Smith', 7, 4),
-       ('Jane', 'Smith', 8, 4),
-       ('John', 'Doe', 9, 5),
-       ('Jane', 'Doe', 10, 5),
-       ('John', 'Smith', 11, 6),
-       ('Jane', 'Smith', 12, 6),
-       ('John', 'Doe', 13, 7),
-       ('Jane', 'Doe', 14, 7);
+VALUES ('Fred', 'Hunter', 1, 1),
+       ('Bobbie', 'Harrington', 2, 1),
+       ('Jill', 'Russell', 3, 2),
+       ('Elvira', 'Hopkins', 4, 2),
+       ('Kellie', 'Maldonado', 5, 3),
+       ('Kara', 'Glover', 6, 3),
+       ('Cameron', 'Perry', 7, 4),
+       ('Dennis', 'Wolfe', 8, 4),
+       ('Salvatore', 'Warner', 9, 5),
+       ('Frankie', 'Fletcher', 10, 5),
